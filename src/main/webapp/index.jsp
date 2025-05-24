@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petshop - Chăm sóc thú cưng</title>
+    <title>Petshop - Chăm sóc thú cưng</title> <!-- 6.1.0 Hệ thống đang ở màn hình chính -->
+    <!-- 8.1.0 Hệ thống đang ở màn hình chính -->
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -258,10 +260,12 @@
                     <a class="nav-link" href="#services">Dịch vụ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="booking-form.jsp">Đặt lịch</a>
+                    <a class="nav-link" href="booking-form.jsp">Đặt lịch</a> <!-- 6.1.1.Hệ thống cài đặt sự kiện cho nút "đặt lịch dịch vụ"-->
+                    <!-- 6.1.2.Người dùng bấm nút "Đặt lịch"-->
+
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#pet-profiles">Hồ sơ thú cưng</a>
+                    <a class="nav-link" href="PetProfile.jsp">Hồ sơ thú cưng</a><!-- 8.1.1.Người dùng bấm vào nút “quản lý hồ sơ thú cưng” -->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#account">
