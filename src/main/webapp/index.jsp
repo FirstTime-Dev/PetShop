@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -245,9 +247,11 @@
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="images/image.png" alt="PetShop Logo" style="height: 40px; margin-right: 10px;">
+            <img src="https://trello.com/1/cards/67e18f72d395d804d2af26c2/attachments/67e191bcec1845d1d437d2cd/download/image.png" alt="PetShop Logo" style="height: 40px; margin-right: 10px;">
+
             <span>PetShop</span>
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -267,12 +271,30 @@
                 <li class="nav-item">
                     <a class="nav-link" href="PetProfile.jsp">Hồ sơ thú cưng</a><!-- 8.1.1.Người dùng bấm vào nút “quản lý hồ sơ thú cưng” -->
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#account">
-                        <i class="fas fa-user me-1"></i>
-                        Tài khoản
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user me-1"></i> Tài khoản
                     </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                        <c:choose>
+                            <c:when test="${empty sessionScope.account}">
+                                <li><a class="dropdown-item" href="login.jsp">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="register.jsp">Đăng ký</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a class="dropdown-item" href="profile.jsp">Trang cá nhân</a></li>
+                                <li><a class="dropdown-item" href="orders.jsp">Đơn hàng</a></li>
+                                <li><a class="dropdown-item" href="logout">Đăng xuất</a></li>
+                                <c:if test="${sessionScope.account.role == 0}">
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="admin.jsp">Trang chủ ADMIN</a></li>
+                                </c:if>
+
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
                 </li>
+
             </ul>
         </div>
     </div>
