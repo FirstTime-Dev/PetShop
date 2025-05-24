@@ -16,21 +16,23 @@ public class BookingServiceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Giả lập người dùng đã đăng nhập
+        // 6.1.0: Hệ thống đang ở màn hình chính, user đã login
         HttpSession session = request.getSession();
         User currentUser = new User(1, "demoUser");
         session.setAttribute("currentUser", currentUser);
 
-        // Lấy dữ liệu từ form
-        String serviceType = request.getParameter("serviceType");
-        String date = request.getParameter("date");
-        String time = request.getParameter("time");
-        String petName = request.getParameter("petName");
-        String petType = request.getParameter("petType");
 
+        String serviceType = request.getParameter("serviceType");// 6.1.3 Chọn loại dịch vụ (tắm,khám,tiêm,cắt tỉa lông)
+        String date = request.getParameter("date");// 6.1.4 Chọn ngày
+        String time = request.getParameter("time");// 6.1.5 Chọn giờ
+        String petName = request.getParameter("petName");// 6.1.6 Nhập tên thú cưng
+        String petType = request.getParameter("petType");// 6.1.7 Chọn loại thú cưng
+
+        // 6.1.8: Tạo đối tượng lịch hẹn và gửi yêu cầu lưu (submit)
         Appointment appointment = new Appointment(serviceType, date, time, petName, petType, currentUser.getId());
         boolean success = AppointmentDAO.saveAppointment(appointment);
 
+        // 6.1.9: Xác nhận lưu thông tin
         if (success) {
             request.setAttribute("message", "Đặt lịch thành công!");
         } else {

@@ -142,7 +142,7 @@
 
     <p class="result-message">${message}</p>
 
-    <a href="home.jsp" class="home-btn">
+    <a href="index.jsp" class="home-btn">
         <i class="fas fa-home"></i>
         Quay lại trang chủ
     </a>
